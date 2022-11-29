@@ -37,21 +37,36 @@ public class Board {
 
     public void printBoard(int n) {
         char[] columns = " abcdefghijklmnopqrstuvwxyz".toCharArray();
-        char[] headers = Arrays.copyOfRange(columns,0,n+1);
+        char[] headers = Arrays.copyOfRange(columns,0,n+2);
 
         for (char header : headers) {
-            System.out.print(header + "\t");
+            System.out.print(" " +header + " ");
         }
         System.out.println();
-        for (int i=1; i<n+1; i++){
-            System.out.print(i + "\t".repeat(n+1)+ i);
+        for (int i=0; i<n; i++){
+            if (i<9) {
+                System.out.print(i + 1 + "  ");
+            } else {
+                System.out.print(i+1+ " ");
+            }
+
+            for (int j=0; j<=n; j++){
+                if ((i+j) % 2 ==0 ){
+
+                    System.out.print("\u001b[47;1m" + "   " + "\u001b[0m");
+                } else {
+                    System.out.print("   ");
+                }
+            }
             System.out.println();
 
         }
         for (char header : headers) {
-            System.out.print(header + "\t");
+            System.out.print(" " +header + " ");
         }
         System.out.println();
+
+
 
     }
 //        public static Pawn[][] initializePawns(int n){
@@ -71,12 +86,12 @@ public class Board {
 
 
 
-//    public static void main(String[] args) {
-//        Board board = new Board(n);
-//        board.getBoard();
-//        board.printBoard(n);
-//        //initializePawns(n);
-//
-//    }
+    public static void main(String[] args) {
+        Board board = new Board(n);
+        board.getBoard();
+        board.printBoard(n);
+        //initializePawns(n);
+
+    }
 
 }
