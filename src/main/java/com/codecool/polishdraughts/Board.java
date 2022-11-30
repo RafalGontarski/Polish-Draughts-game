@@ -9,6 +9,7 @@ public class Board {
 
     private Pawn[][] board;
     private Game game;
+    private Pawn pawn;
 
     public Board(int n){
        // board = new String[n][n];
@@ -126,9 +127,9 @@ public class Board {
         int[] selectedPosition = getPawn();
         int selectedFieldX = selectedPosition[1];
         int selectedFieldY = selectedPosition[0];
+
         board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
         removePawn(board, startPositionX,startPositionY);
-
     }
 
 }
