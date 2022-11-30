@@ -3,10 +3,22 @@ package com.codecool.polishdraughts;
 public class Pawn {
 
     String color;
-    int[] coordinates;
+    int coordinateX;
+    int coordinateY;
 
-    public String getColor(int[] coordinates){
-    return this.color;
+    public Pawn(String player){
+        color = player;
+
+
+    }
+
+    public String getColor(){
+        return this.color;
+    }
+
+    @Override
+    public String toString(){
+        return getColor();
     }
 
     public boolean isCrowned(int[] coordinates){

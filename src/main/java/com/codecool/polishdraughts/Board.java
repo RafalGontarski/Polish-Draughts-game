@@ -7,12 +7,17 @@ import java.util.Scanner;
 public class Board {
 
 
-    private int[][] board;
-    
+    private Pawn[][] board;
+
     public Board(int n){
-        board = new int[n][n];
+       // board = new String[n][n];
+        board = setPawns(new Pawn[n][n]);
+
+    }
 
 
+    public Pawn[][] getBoard() {
+        return board;
     }
     public static int getBoardSize() {
         int n = 0;
@@ -38,46 +43,76 @@ public class Board {
     }
 
 
-    public void printBoard() {
-        char[] columns = " abcdefghijklmnopqrstuvwxyz".toCharArray();
-        char[] headers = Arrays.copyOfRange(columns,0,board.length+2);
-
-        for (char header : headers) {
-            System.out.print(" " +header + " ");
+    public void printBoard(Pawn[][] board) {
+        char[] columns = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        StringBuilder boardBuilder = new StringBuilder("    ");
+        for (int row = 0; row < board.length; row++) {
+            boardBuilder.append(columns[row]).append("  ");
         }
-        System.out.println();
-        for (int i=0; i<board.length; i++){
-            if (i<9) {
-                System.out.print(i + 1 + "  ");
+        boardBuilder.append("\n");
+        for (int row = 0; row < board.length; row++) {
+            if (row < 9) {
+                boardBuilder.append(row + 1).append("  ");
             } else {
-                System.out.print(i+1+ " ");
+                boardBuilder.append(row + 1).append(" ");
             }
-            for (int j=0; j<=board.length; j++){
-                if ((i+j) % 2 ==0 ){
-
-                    System.out.print("\u001b[47;1m" + "   " + "\u001b[0m");
+            for (int column = 0; column < board[row].length; column++) {
+                if (board[row][column] == null) {
+                    if ((row + column) % 2 == 0) {
+                        boardBuilder.append("\u001b[47;1m" + "   " + "\u001b[0m");
+                    } else {
+                        boardBuilder.append("   ");
+                    }
                 } else {
-                    System.out.print("   ");
+                    switch (board[row][column].toString()) {
+                        case "O":
+                            boardBuilder.append(" ").append("O").append(" ");
+                            break;
+                        case "X":
+                            boardBuilder.append(" ").append("X").append(" ");
+                            break;
+                        default:
+
+                    }
                 }
             }
-            System.out.print(" "+(i+1));
-            System.out.println();
+            boardBuilder.append(" ").append(row + 1);
+            boardBuilder.append("\n");
+        }
+        boardBuilder.append("\t");
+        for (int row = 0; row < board.length; row++) {
+            boardBuilder.append(columns[row]).append("  ");
 
         }
-        for (char header : headers) {
-            System.out.print(" " +header + " ");
-        }
-        System.out.println();
-
+        System.out.println(boardBuilder);
     }
 
 
+    private Pawn[][] setPawns(Pawn[][] board) {
+        return createPawns(board);
 
-
+    }
+    private Pawn[][] createPawns(Pawn[][] board){
+        for (int row =0; row<3; row++) {
+                for (int column = 0; column < board[0].length; column ++) {
+                    if ((row % 2 != 0 && column % 2 == 0) || (row % 2 == 0 && column % 2 != 0)) {
+                        board[row][column] = new Pawn("X");
+                    }
+                }
+            }
+        for (int row = board.length-3; row<board.length; row++){
+            for (int column =0; column<board[0].length;column++){
+                if ((row % 2 != 0 && column % 2 == 0) || (row % 2 == 0 && column % 2 != 0)) {
+                    board[row][column] = new Pawn("O");
+                }
+            }
+        }
+        return board;
+    }
 
     public static void main(String[] args) {
         Board board = new Board(getBoardSize());
-        board.printBoard();
+        board.printBoard(board.getBoard());
 
     }
 
