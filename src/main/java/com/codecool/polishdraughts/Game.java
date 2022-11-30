@@ -20,12 +20,12 @@ public class Game {
 
     }
 
-    public static int[] getCoordinates() {
+    public static int[] getCoordinates(String message) {
         int[] coordinates = new int[2];
         String columns = "abcdefghijklmnopqrstuvwxyz";
         Scanner pawn = new Scanner(System.in);
 
-        System.out.println("Pick pawn: ");
+        System.out.println(message);
         String userInput = pawn.nextLine();
         String column = userInput.substring(0, 1).toLowerCase();
         int row = Integer.parseInt(userInput.substring(1));

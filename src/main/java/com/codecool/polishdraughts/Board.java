@@ -116,16 +116,16 @@ public class Board {
         board[x][y] = null;
     }
 
-    public int[] getPawn(){
-        return Game.getCoordinates();
+    public int[] getPawn(String message){
+        return Game.getCoordinates(message);
     }
 
     public void movePawn(){
         Pawn check = new Pawn();
-        int[] selectedPawn = getPawn();
+        int[] selectedPawn = getPawn("Pick pawn: ");
         int startPositionX=selectedPawn[1];
         int startPositionY=selectedPawn[0];
-        int[] selectedPosition = getPawn();
+        int[] selectedPosition = getPawn("Pick field: ");
         int selectedFieldX = selectedPosition[1];
         int selectedFieldY = selectedPosition[0];
         if (check.isCorrectMove(startPositionX, startPositionY, selectedFieldX, selectedFieldY)) {
