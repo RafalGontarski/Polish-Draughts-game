@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class Board {
 
 
     private Pawn[][] board;
-    private Game game;
-    private Pawn pawn;
+
 
     public Board(int n){
        // board = new String[n][n];
@@ -121,15 +121,17 @@ public class Board {
     }
 
     public void movePawn(){
+        Pawn check = new Pawn();
         int[] selectedPawn = getPawn();
         int startPositionX=selectedPawn[1];
         int startPositionY=selectedPawn[0];
         int[] selectedPosition = getPawn();
         int selectedFieldX = selectedPosition[1];
         int selectedFieldY = selectedPosition[0];
-
-        board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
-        removePawn(board, startPositionX,startPositionY);
+        if (check.isCorrectMove(startPositionX, startPositionY, selectedFieldX, selectedFieldY)) {
+            board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
+            removePawn(board, startPositionX, startPositionY);
+        }
     }
 
 }

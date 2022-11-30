@@ -16,6 +16,10 @@ public class Pawn {
         color = player;
 
     }
+    public Pawn(){
+
+
+    }
 
 
     public String getColor(){
@@ -31,12 +35,12 @@ public class Pawn {
         return false;
     }
 
-    public boolean isCorrectMove(int[] startCoordinates, int[] endCoordinates){
-        if (endCoordinates[0] < 0 || endCoordinates[1] < 0){
+    public boolean isCorrectMove(int startCoordinatesX, int startCoordinatesY, int endCoordinatesX, int endCoordinatesY){
+        if (endCoordinatesX < 0 || endCoordinatesY < 0){
             return false;
         }
-        int coordinateX = startCoordinates[0] - endCoordinates[0];
-        int coordinateY = startCoordinates[1] - endCoordinates[1];
+        int coordinateX = startCoordinatesX - endCoordinatesX;
+        int coordinateY = startCoordinatesY - endCoordinatesY;
         if(this.getColor() == "O"){
             if (coordinateX == 1 && coordinateY == 1){
                 return true;
