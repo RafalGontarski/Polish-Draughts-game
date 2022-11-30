@@ -5,20 +5,17 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Board {
-
-
     private Pawn[][] board;
 
     public Board(int n){
        // board = new String[n][n];
         board = setPawns(new Pawn[n][n]);
-
     }
-
 
     public Pawn[][] getBoard() {
         return board;
     }
+
     public static int getBoardSize() {
         int n = 0;
         boolean input = false;
@@ -31,7 +28,6 @@ public class Board {
                 if (userInput >= 10 && userInput <= 20) {
                     n = userInput;
                     input = true;
-
                 } else {
                     System.out.println("Number out of range! Try again !");
                 }
@@ -41,7 +37,6 @@ public class Board {
         }
        return n;
     }
-
 
     public void printBoard(Pawn[][] board) {
         char[] columns = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -87,11 +82,11 @@ public class Board {
         System.out.println(boardBuilder);
     }
 
-
     private Pawn[][] setPawns(Pawn[][] board) {
         return createPawns(board);
 
     }
+
     private Pawn[][] createPawns(Pawn[][] board){
         for (int row =0; row<3; row++) {
                 for (int column = 0; column < board[0].length; column ++) {
@@ -109,5 +104,4 @@ public class Board {
         }
         return board;
     }
-
 }
