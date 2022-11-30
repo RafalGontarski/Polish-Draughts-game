@@ -1,24 +1,36 @@
 package com.codecool.polishdraughts;
 
 public class Pawn {
+    private int player;
 
-    String color;
-    int[] coordinates;
-
-    public String getColor(int[] coordinates){
-    return this.color;
+    Pawn(int player, int x, int y) {
+        this.setPlayer(player);
+        Coordinates.x = x;
+        Coordinates.y = y;
     }
 
-    public boolean isCrowned(int[] coordinates){
-        return false;
+    public void setPlayer(int player) {
+        this.player = player;
+    }
+    public int getPlayer() {
+        return this.player;
+    }
+    public boolean getPlayerOne() {
+        return player == 1;
     }
 
-    public boolean isCorrectMove(int[] coordinates){
-        return false;
+    public void setCoordinates(int x, int y) {
+        Coordinates.x = x;
+        Coordinates.y = y;
     }
 
-    public boolean isMultipleJumps(int[] coordinates){
-        return false;
+    public int[] getCoordinates() {
+        return new int[]{Coordinates.x, Coordinates.y};
     }
 
+    static class Coordinates {
+        public static int x;
+        public static int y;
+
+    }
 }
