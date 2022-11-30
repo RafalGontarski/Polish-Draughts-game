@@ -8,6 +8,7 @@ public class Board {
 
 
     private Pawn[][] board;
+    private Game game;
 
     public Board(int n){
        // board = new String[n][n];
@@ -108,6 +109,26 @@ public class Board {
             }
         }
         return board;
+    }
+
+    public void removePawn(Pawn[][] board, int x, int y){
+        board[x][y] = null;
+    }
+
+    public int[] getPawn(){
+        return Game.getCoordinates();
+    }
+
+    public void movePawn(){
+        int[] selectedPawn = getPawn();
+        int startPositionX=selectedPawn[1];
+        int startPositionY=selectedPawn[0];
+        int[] selectedPosition = getPawn();
+        int selectedFieldX = selectedPosition[1];
+        int selectedFieldY = selectedPosition[0];
+        board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
+        removePawn(board, startPositionX,startPositionY);
+
     }
 
 }

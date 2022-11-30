@@ -1,4 +1,5 @@
 package com.codecool.polishdraughts;
+import com.codecool.polishdraughts.Game.*;
 
 public class Pawn {
 
@@ -8,7 +9,6 @@ public class Pawn {
 
     public Pawn(String player){
         color = player;
-
 
     }
 
