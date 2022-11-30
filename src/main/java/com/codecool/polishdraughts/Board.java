@@ -110,10 +110,4 @@ public class Board {
         return board;
     }
 
-    public static void main(String[] args) {
-        Board board = new Board(getBoardSize());
-        board.printBoard(board.getBoard());
-
-    }
-
 }
