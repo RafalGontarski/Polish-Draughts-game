@@ -2,10 +2,22 @@ package com.codecool.polishdraughts;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import com.codecool.polishdraughts.Board;
+import static com.codecool.polishdraughts.Board.getBoardSize;
 
 public class Game {
+    public static void main(String[] args) {
+        Board board = new Board(getBoardSize());
+        board.printBoard(board.getBoard());
 
-    public int[] getCoordinates(String message) {
+        int[] startCoordinates = getCoordinates("Pick pawn: ");
+        int[] endCoordinates = getCoordinates("Pick field: ");
+        System.out.println(Arrays.toString(startCoordinates));
+        System.out.println(Arrays.toString(endCoordinates));
+
+    }
+
+    public static int[] getCoordinates(String message) {
         int[] coordinates = new int[2];
         String columns = "abcdefghijklmnopqrstuvwxyz";
         Scanner pawn = new Scanner(System.in);

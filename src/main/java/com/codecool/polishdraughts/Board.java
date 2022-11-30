@@ -3,7 +3,6 @@ package com.codecool.polishdraughts;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import com.codecool.polishdraughts.Game;
 
 public class Board {
 
@@ -109,20 +108,6 @@ public class Board {
             }
         }
         return board;
-    }
-
-
-
-
-    public static void main(String[] args) {
-        Board board = new Board(getBoardSize());
-        board.printBoard(board.getBoard());
-        Game game = new Game();
-        int[] startCoordinates = game.getCoordinates("Pick pawn: ");
-        int[] endCoordinates = game.getCoordinates("Pick field: ");
-//        System.out.println(startCoordinates);
-//        System.out.println(Arrays.toString(endCoordinates));
-
     }
 
 }
