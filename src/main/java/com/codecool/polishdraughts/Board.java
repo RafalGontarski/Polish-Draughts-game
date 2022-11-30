@@ -5,12 +5,18 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Board {
+
+
     private Pawn[][] board;
+    private Game game;
+    private Pawn pawn;
 
     public Board(int n){
        // board = new String[n][n];
         board = setPawns(new Pawn[n][n]);
+
     }
+
 
     public Pawn[][] getBoard() {
         return board;
@@ -28,6 +34,7 @@ public class Board {
                 if (userInput >= 10 && userInput <= 20) {
                     n = userInput;
                     input = true;
+
                 } else {
                     System.out.println("Number out of range! Try again !");
                 }
@@ -37,6 +44,7 @@ public class Board {
         }
        return n;
     }
+
 
     public void printBoard(Pawn[][] board) {
         char[] columns = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -82,6 +90,7 @@ public class Board {
         System.out.println(boardBuilder);
     }
 
+
     private Pawn[][] setPawns(Pawn[][] board) {
         return createPawns(board);
 
@@ -104,4 +113,25 @@ public class Board {
         }
         return board;
     }
+
+    public void removePawn(Pawn[][] board, int x, int y){
+        board[x][y] = null;
+    }
+
+    public int[] getPawn(){
+        return Game.getCoordinates();
+    }
+
+    public void movePawn(){
+        int[] selectedPawn = getPawn();
+        int startPositionX=selectedPawn[1];
+        int startPositionY=selectedPawn[0];
+        int[] selectedPosition = getPawn();
+        int selectedFieldX = selectedPosition[1];
+        int selectedFieldY = selectedPosition[0];
+
+        board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
+        removePawn(board, startPositionX,startPositionY);
+    }
+
 }

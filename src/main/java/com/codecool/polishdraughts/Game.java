@@ -11,6 +11,7 @@ public class Game {
     static int secondPlayerPawn;
 
 
+    String name;
     public static void main(String[] args) {
         System.out.println("\n" + "WELCOME TO POLISH DRAUGHTS BY\n");
 
@@ -23,6 +24,13 @@ public class Game {
         boolean isWinner = false;
         Board board = new Board(getBoardSize());
         board.printBoard(board.getBoard());
+        board.movePawn();
+        board.printBoard(board.getBoard());
+//
+//        int[] startCoordinates = getCoordinates("Pick pawn: ");
+//        int[] endCoordinates = getCoordinates("Pick field: ");
+//        System.out.println(Arrays.toString(startCoordinates));
+//        System.out.println(Arrays.toString(endCoordinates));
 
        while (true) {
             playRound(player, board.getBoard());
@@ -69,11 +77,12 @@ public class Game {
 
     int[] getCoordinates(int player, String message) {
 
+    public static int[] getCoordinates() {
         int[] coordinates = new int[2];
         String columns = "abcdefghijklmnopqrstuvwxyz";
         Scanner pawn = new Scanner(System.in);
 
-        System.out.println(message);
+        System.out.println("Pick pawn: ");
         String userInput = pawn.nextLine();
         String column = userInput.substring(0, 1).toLowerCase();
         int row = Integer.parseInt(userInput.substring(1));
