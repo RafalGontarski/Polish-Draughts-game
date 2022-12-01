@@ -10,9 +10,7 @@ public class Board {
     private Pawn[][] board;
 
     public Board(int n){
-       // board = new String[n][n];
         board = setPawns(new Pawn[n][n]);
-
     }
 
     public Pawn[][] getBoard() {
@@ -116,18 +114,29 @@ public class Board {
         return Game.getCoordinates(message);
     }
 
-    public void movePawn(int currentPlayer){
+    public void movePawn(int currentPlayer) {
         Pawn check = new Pawn();
-        System.out.println("Player "+currentPlayer + " Your turn !");
-        int[] selectedPawn = getPawn("Pick pawn: ");
-        int startPositionX=selectedPawn[1];
-        int startPositionY=selectedPawn[0];
-        int[] selectedPosition = getPawn("Pick field: ");
-        int selectedFieldX = selectedPosition[1];
-        int selectedFieldY = selectedPosition[0];
-        if (check.isCorrectMove(startPositionX, startPositionY, selectedFieldX, selectedFieldY)) {
-            board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
-            removePawn(board, startPositionX, startPositionY);
+        try {
+            System.out.println("Player " + currentPlayer + " Your turn !");
+            int[] selectedPawn = getPawn("Pick pawn: ");
+            int startPositionX = selectedPawn[1];
+            int startPositionY = selectedPawn[0];
+            int[] selectedPosition = getPawn("Pick field: ");
+            int selectedFieldX = selectedPosition[1];
+            int selectedFieldY = selectedPosition[0];
+            int pawnRemovedX = (selectedFieldX + startPositionX) / 2;
+            int pawnRemovedY = (selectedFieldY + startPositionY) / 2;
+            if (check.isCorrectMove(board, startPositionX, startPositionY, selectedFieldX, selectedFieldY)) {
+                board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
+                removePawn(board, startPositionX, startPositionY);
+                removePawn(board, pawnRemovedX, pawnRemovedY);
+            } else {
+                System.out.println("Wrong input!");
+                movePawn(currentPlayer);
+            }
+        } catch (Exception e) {
+            System.out.println("Wrong input!");
+            movePawn(currentPlayer);
         }
     }
 
