@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Board {
 
-
     private Pawn[][] board;
     private Game game;
     private Pawn pawn;
@@ -16,7 +15,6 @@ public class Board {
         board = setPawns(new Pawn[n][n]);
 
     }
-
 
     public Pawn[][] getBoard() {
         return board;
@@ -44,7 +42,6 @@ public class Board {
         }
        return n;
     }
-
 
     public void printBoard(Pawn[][] board) {
         char[] columns = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -90,10 +87,8 @@ public class Board {
         System.out.println(boardBuilder);
     }
 
-
     private Pawn[][] setPawns(Pawn[][] board) {
         return createPawns(board);
-
     }
 
     private Pawn[][] createPawns(Pawn[][] board){
