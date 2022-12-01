@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Board {
 
-
     private Pawn[][] board;
 
 
@@ -17,10 +16,10 @@ public class Board {
 
     }
 
-
     public Pawn[][] getBoard() {
         return board;
     }
+
     public static int getBoardSize() {
         int n = 0;
         boolean input = false;
@@ -43,7 +42,6 @@ public class Board {
         }
        return n;
     }
-
 
     public void printBoard(Pawn[][] board) {
         char[] columns = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -89,11 +87,10 @@ public class Board {
         System.out.println(boardBuilder);
     }
 
-
     private Pawn[][] setPawns(Pawn[][] board) {
         return createPawns(board);
-
     }
+
     private Pawn[][] createPawns(Pawn[][] board){
         for (int row =0; row<3; row++) {
                 for (int column = 0; column < board[0].length; column ++) {
