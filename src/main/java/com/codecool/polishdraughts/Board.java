@@ -9,7 +9,6 @@ public class Board {
 
     private Pawn[][] board;
 
-
     public Board(int n){
        // board = new String[n][n];
         board = setPawns(new Pawn[n][n]);
