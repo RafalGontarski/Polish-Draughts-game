@@ -126,7 +126,7 @@ public class Board {
         int[] selectedPosition = getPawn("Pick field: ");
         int selectedFieldX = selectedPosition[1];
         int selectedFieldY = selectedPosition[0];
-        if (check.isCorrectMove(startPositionX, startPositionY, selectedFieldX, selectedFieldY)) {
+        if (check.isCorrectMove(board, startPositionX, startPositionY, selectedFieldX, selectedFieldY)) {
             board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
             removePawn(board, startPositionX, startPositionY);
         }

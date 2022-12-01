@@ -35,20 +35,21 @@ public class Pawn {
         return false;
     }
 
-    public boolean isCorrectMove(int startCoordinatesX, int startCoordinatesY, int endCoordinatesX, int endCoordinatesY){
+    public boolean isCorrectMove(Pawn[][] board, int startCoordinatesX, int startCoordinatesY, int endCoordinatesX, int endCoordinatesY){
         if (endCoordinatesX < 0 || endCoordinatesY < 0){
             return false;
         }
         int coordinateX = startCoordinatesX - endCoordinatesX;
         int coordinateY = startCoordinatesY - endCoordinatesY;
-        if(this.getColor() == "O"){
+
+        if(board[startCoordinatesX][startCoordinatesY].color.equals("O") ){
             if (coordinateX == 1 && coordinateY == -1){
                 return true;
             }
             else if (coordinateX == 2 && coordinateY == 2){
                 return true;
             }
-            else if (coordinateX == -1 && coordinateY == 1){
+            else if (coordinateX == 1 && coordinateY == 1){
                 return true;
             }
             else if (coordinateX == -2 && coordinateY == 2){
@@ -62,12 +63,13 @@ public class Pawn {
             }
         }
         else{
-            if (coordinateX == 1 && coordinateY == -1){
+             if (coordinateX == -1 && coordinateY == 1){
                 return true;
             }
-            else if (coordinateX == -1 && coordinateY == 1){
+            else if (coordinateX == -1 && coordinateY == -1){
                 return true;
             }
+
             else if (coordinateX == 2 && coordinateY == -2){
                 return true;
             }
