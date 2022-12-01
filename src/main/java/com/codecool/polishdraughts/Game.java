@@ -10,7 +10,6 @@ public class Game {
     static int firstPlayerPawn;
     static int secondPlayerPawn;
 
-
     String name;
     public static void main(String[] args) {
         System.out.println("\n" + "WELCOME TO POLISH DRAUGHTS BY\n");
@@ -21,18 +20,13 @@ public class Game {
 
     void start() {
         int player = 1;
-
         boolean isWinner = false;
         Board board = new Board(getBoardSize());
 
-
-
        while (true) {
-
            playRound();
            board.printBoard(board.getBoard());
            board.movePawn(player);
-
 
 //            if (checkForWinner(firstPlayerPawn, secondPlayerPawn)) {
 //                isWinner = true;
@@ -40,7 +34,6 @@ public class Game {
 //            } else if (checkForDraw(firstPlayerPawn, secondPlayerPawn)) {
 //                break;
 //            }
-
 
            if (player == 1) {
                player = 2;
@@ -54,10 +47,9 @@ public class Game {
 
     void playRound() {
 //        boolean isWinner = false;
-        int[] pawnPosition;
-        int[] movePosition;
+//        int[] pawnPosition;
+//        int[] movePosition;
 //        do {
-
 
 //        }
 //        while (!tryToMakeMove(pawnPosition[0], pawnPosition[1], movePosition[0], movePosition[1], pawnPosition[2]));
