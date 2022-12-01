@@ -53,7 +53,6 @@ public class Game {
 //        boolean isWinner = false;
         int[] pawnPosition;
         int[] movePosition;
-
 //        do {
             pawnPosition = getCoordinates("Pick pawn: ");
             movePosition = getCoordinates("Pick field: ");
