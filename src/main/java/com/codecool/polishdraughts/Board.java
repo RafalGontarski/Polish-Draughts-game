@@ -117,8 +117,9 @@ public class Board {
         return Game.getCoordinates(message);
     }
 
-    public void movePawn(){
+    public void movePawn(int currentPlayer){
         Pawn check = new Pawn();
+        System.out.println("Player "+currentPlayer + " Your turn !");
         int[] selectedPawn = getPawn("Pick pawn: ");
         int startPositionX=selectedPawn[1];
         int startPositionY=selectedPawn[0];

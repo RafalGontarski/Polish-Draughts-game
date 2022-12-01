@@ -21,43 +21,44 @@ public class Game {
 
     void start() {
         int player = 1;
+
         boolean isWinner = false;
         Board board = new Board(getBoardSize());
-        board.printBoard(board.getBoard());
-        board.movePawn();
+
+
 
        while (true) {
-            playRound(board.getBoard());
-            board.printBoard(board.getBoard());
+
+           playRound();
+           board.printBoard(board.getBoard());
+           board.movePawn(player);
+
+
 //            if (checkForWinner(firstPlayerPawn, secondPlayerPawn)) {
 //                isWinner = true;
 //                break;
 //            } else if (checkForDraw(firstPlayerPawn, secondPlayerPawn)) {
 //                break;
 //            }
-            Game game = new Game();
-            game.switcher(player);
+
+
+           if (player == 1) {
+               player = 2;
+           }
+           else {
+               player = 1;
+           }
         }
     }
 
-    void switcher(int player) {
-        if (player == 1) {
-            player = 2;
-        }
-        else {
-            player = 1;
-        }
-    }
 
-    void playRound(Pawn[][] board) {
+    void playRound() {
 //        boolean isWinner = false;
         int[] pawnPosition;
         int[] movePosition;
 //        do {
-            pawnPosition = getCoordinates("Pick pawn: ");
-            movePosition = getCoordinates("Pick field: ");
-            System.out.println(Arrays.toString(pawnPosition));
-            System.out.println(Arrays.toString(movePosition));
+
+
 //        }
 //        while (!tryToMakeMove(pawnPosition[0], pawnPosition[1], movePosition[0], movePosition[1], pawnPosition[2]));
 
