@@ -42,7 +42,7 @@ public class Pawn {
         int coordinateX = startCoordinatesX - endCoordinatesX;
         int coordinateY = startCoordinatesY - endCoordinatesY;
         if(this.getColor() == "O"){
-            if (coordinateX == 1 && coordinateY == 1){
+            if (coordinateX == 1 && coordinateY == -1){
                 return true;
             }
             else if (coordinateX == 2 && coordinateY == 2){
@@ -54,6 +54,9 @@ public class Pawn {
             else if (coordinateX == -2 && coordinateY == 2){
                 return true;
             }
+            else if (coordinateX == 2 && coordinateY == -2){
+                return true;
+            }
             else{
                 return false;
             }
@@ -62,13 +65,16 @@ public class Pawn {
             if (coordinateX == 1 && coordinateY == -1){
                 return true;
             }
+            else if (coordinateX == -1 && coordinateY == 1){
+                return true;
+            }
             else if (coordinateX == 2 && coordinateY == -2){
                 return true;
             }
-            else if (coordinateX == -1 && coordinateY == -1){
+            else if (coordinateX == -2 && coordinateY == -2){
                 return true;
             }
-            else if (coordinateX == -2 && coordinateY == -2){
+            else if (coordinateX == -2 && coordinateY == 2){
                 return true;
             }
             else return false;
