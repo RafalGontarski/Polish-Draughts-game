@@ -20,6 +20,7 @@ public class Pawn {
     public String toString(){
         return getColor();
     }
+
     public  boolean isCorrectMove(Pawn[][] board, int startCoordinatesX, int startCoordinatesY, int endCoordinatesX, int endCoordinatesY) {
         if (endCoordinatesX < 0 || endCoordinatesY < 0) {
             return false;

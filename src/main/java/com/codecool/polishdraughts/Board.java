@@ -11,7 +11,8 @@ public class Board {
 
 
     public Board(int n){
-        board = setPawns(new Pawn[n][n]);
+        board = new Pawn[n][n];
+        createPawns();
     }
 
     public Pawn[][] getBoard() {
@@ -85,11 +86,7 @@ public class Board {
         System.out.println(boardBuilder);
     }
 
-    private Pawn[][] setPawns(Pawn[][] board) {
-        return createPawns(board);
-    }
-
-    private Pawn[][] createPawns(Pawn[][] board){
+    private void createPawns(){
         for (int row =0; row<3; row++) {
                 for (int column = 0; column < board[0].length; column ++) {
                     if ((row % 2 != 0 && column % 2 == 0) || (row % 2 == 0 && column % 2 != 0)) {
@@ -104,10 +101,9 @@ public class Board {
                 }
             }
         }
-        return board;
     }
 
-    public void removePawn(Pawn[][] board, int x, int y){
+    public void removePawn(int x, int y){
         board[x][y] = null;
     }
 
@@ -129,8 +125,8 @@ public class Board {
             int pawnRemovedY = (selectedFieldY + startPositionY) / 2;
             if (check.isCorrectMove(board, startPositionX, startPositionY, selectedFieldX, selectedFieldY)) {
                 board[selectedFieldX][selectedFieldY] = board[startPositionX][startPositionY];
-                removePawn(board, startPositionX, startPositionY);
-                removePawn(board, pawnRemovedX, pawnRemovedY);
+                removePawn(startPositionX, startPositionY);
+                removePawn(pawnRemovedX, pawnRemovedY);
             } else {
                 System.out.println("Wrong input!");
                 movePawn(currentPlayer);

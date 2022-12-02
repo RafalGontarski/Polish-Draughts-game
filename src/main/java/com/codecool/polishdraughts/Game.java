@@ -25,7 +25,7 @@ public class Game {
            else {
                player = 1;
            }
-        }
+       }
     }
 
     public static int[] getCoordinates(String message) {
